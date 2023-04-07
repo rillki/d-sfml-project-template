@@ -1,0 +1,21 @@
+{
+	"authors": [
+		"rillki"
+	],
+	"copyright": "Copyright © 2023, rillki",
+	"dependencies": {
+		"bindbc-sfml": "~>1.0.2"
+	},
+	"description": "D/SFML project template",
+	"license": "BSL",
+	"name": "d-sfml-project-template",
+	"targetPath": "bin",
+	"versions": [
+		"SFML_Audio",
+		"SFML_Graphics",
+		"SFML_Network",
+		"SFML_System",
+		"SFML_Window",
+		"SFML_250"
+	]
+}
