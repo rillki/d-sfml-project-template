@@ -1,11 +1,10 @@
 module app;
 
-import std.stdio: writeln;
-import std.string: toStringz;
-
 import bindbc.sfml;
 
 void main() {
+    import std.string: toStringz;
+
     // window dimensions
     enum width = 720;
     enum height = 480;
