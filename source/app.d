@@ -6,17 +6,6 @@ import std.string: toStringz;
 import bindbc.sfml;
 
 void main() {
-    version(Windows) {
-        import bindbc.loader;
-        setCustomLoaderSearchPath("libs");
-    }
-
-    // attempt at loading sfml
-    if(!loadSFML()) {
-        writeln("Failed to load SFML library!");
-        return;
-    }
-
     // window dimensions
     enum width = 720;
     enum height = 480;

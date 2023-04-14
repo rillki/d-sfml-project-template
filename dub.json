@@ -16,6 +16,13 @@
 		"SFML_Network",
 		"SFML_System",
 		"SFML_Window",
-		"SFML_250"
+		"BindSFML_Static"
+	],
+	"libs": [
+		"csfml-audio",
+		"csfml-graphics",
+		"csfml-network",
+		"csfml-system",
+		"csfml-window"
 	]
 }
