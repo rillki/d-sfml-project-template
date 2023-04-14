@@ -12,15 +12,37 @@ void main() {
     enum title = "D/SFML project";
 
     // create window
-    auto window = sfWindow_create(sfVideoMode(width, height), title.toStringz, sfWindowStyle.sfDefaultStyle, null);
-    scope(exit) { sfWindow_destroy(window); }
+    auto window = sfRenderWindow_create(sfVideoMode(width, height), title.toStringz, sfWindowStyle.sfDefaultStyle, null);
+    scope(exit) { sfRenderWindow_destroy(window); }
 
-    while(sfWindow_isOpen(window)) {
+    // configure window
+    sfRenderWindow_setFramerateLimit(window, 30);
+    sfRenderWindow_setVerticalSyncEnabled(window, true);
+
+    // load texture
+    auto texture = sfTexture_createFromFile("imgs/d-sfml.jpg", null);
+    scope(exit) { sfTexture_destroy(texture); }
+
+    // create sprite
+    auto sprite = sfSprite_create();
+    scope(exit) { sfSprite_destroy(sprite); }
+    sfSprite_setTexture(sprite, texture, sfTrue);
+
+    while(sfRenderWindow_isOpen(window)) {
         // process events
         sfEvent event;
-        while(sfWindow_pollEvent(window, &event)) {
-            if(event.type == sfEventType.sfEvtClosed) {
-                sfWindow_close(window);
+        while(sfRenderWindow_pollEvent(window, &event)) {
+            switch(event.type) with(sfEvent) {
+                case sfEvtClosed:
+                    sfRenderWindow_close(window);
+                    break;
+                case sfEvtKeyPressed:
+                    if(event.key.code == sfKeyCode.sfKeyEscape) {
+                        sfRenderWindow_close(window);
+                    }
+                    break;
+                default: 
+                    break;
             }
         }
 
@@ -28,6 +50,9 @@ void main() {
         // ...
 
         // render
-        // ...
+        sfRenderWindow_clear(window, sfColor_fromRGBA(0, 0, 0, 0));
+        scope(exit) { sfRenderWindow_display(window); }
+        
+        sfRenderWindow_drawSprite(window, sprite, null);
     }
 }
