@@ -6,8 +6,8 @@ void main() {
     import std.string: toStringz;
 
     // window dimensions
-    enum width = 720;
-    enum height = 480;
+    enum width = 1080;
+    enum height = 720;
     enum title = "D/SFML project";
 
     // create window
@@ -19,7 +19,7 @@ void main() {
     sfRenderWindow_setVerticalSyncEnabled(window, true);
 
     // load texture
-    auto texture = sfTexture_createFromFile("imgs/d-sfml.jpg", null);
+    auto texture = sfTexture_createFromFile("imgs/d-sfml-1080x720.jpg", null);
     scope(exit) { sfTexture_destroy(texture); }
 
     // create sprite
